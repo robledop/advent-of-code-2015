@@ -1,9 +1,12 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main(void)
 {
     FILE *textfile;
     int floor = 0;
+    int current_position = 1;
+    bool found = false;
     char c;
     textfile = fopen("input.txt", "r");
 
@@ -18,9 +21,17 @@ int main(void)
         {
             --floor;
         }
+
+        if (floor == -1 && !found)
+        {
+            found = true;
+            printf("First went into the basement at position: %d\n", current_position);
+        }
+
+        current_position++;
     }
 
-    printf("Floor: %d\n", floor);
+    printf("Ended up at floor: %d\n", floor);
 
     fclose(textfile);
 }
