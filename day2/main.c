@@ -75,7 +75,6 @@ int main(int argc, char **argv)
     size_t total_ribbon_length = 0;
     while (getline(&line, &len, text_file) != -1)
     {
-        printf("%s", line);
         int length = atoi(strtok(line, "x"));
         int width = atoi(strtok(NULL, "x"));
         int height = atoi(strtok(NULL, "x"));
@@ -92,9 +91,7 @@ int main(int argc, char **argv)
         total_paper_area += paper_area;
 
         int shortest_edge = find_smallest(length, width, height);
-        printf("smallest edge: %d\n", shortest_edge);
         int second_shortest_edge = find_second_smallest(length, width, height);
-        printf("second smallest edge: %d\n", second_shortest_edge);
 
         total_ribbon_length += (2 * shortest_edge) + (2 * second_shortest_edge) + (length * height * width);
     }
